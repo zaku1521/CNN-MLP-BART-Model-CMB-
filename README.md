@@ -15,11 +15,6 @@ Storage (Disk): 40 GB
 Use cases: Training the 3D-SAT-OLED model and performing large-scale inference
 Dependencies 
 Note: This project requires Python 3.9. Please ensure you are using a Python 3.9 environment before installing dependencies.
-
-
-
-
-
 packages	version
 transformers	4.41
 tokenizers	0.19.1
@@ -60,15 +55,12 @@ Format: The dataset is stored in .npz files containing:
 Model
 The model is CMB (CNN-MLP-BART), a deep learning architecture designed for predicting SMILES from infrared spectra. It integrates a Convolutional Neural Network (CNN) for feature extraction from IR data, followed by a Multi-Layer Perceptron (MLP) for vectorizing these features. The model uses the BART architecture for SMILES generation, leveraging a sequence-to-sequence framework to produce accurate molecular representations. This model is designed to handle spectral data and molecular structure predictions efficiently, enabling automated molecular identification directly from raw IR spectra.
 Configuration
-
-
 Quick Start
 (1)Installation
 pip install requirements.txt
 (2) Train and Top-K accuracy
 python cmb.py 
 To run the training and evaluation code, the following steps are involved:Data ,as shown in the following figure('key' represents the data number, 'smi' represents the SMILES molecular formula, and 'ir' represents the infrared spectral data)
-
 Training Data: The code requires the train.lmdb file, which contains the training dataset in LMDB format. This file must include molecular structures (SMILES) and corresponding infrared (IR) spectra.
 Test Data: The test.small.lmdb file is used for evaluation after the training phase. Similar to the training data, this file should contain test samples with both IR spectra and ground-truth SMILES.
 (3)Output
@@ -78,11 +70,8 @@ These outputs can be used for further inference or fine-tuning on additional dat
 Accuracy Evaluation：During the evaluation phase, the code computes Top-K accuracy for the model's SMILES predictions. It checks if the correct SMILES appears within the top K predicted results. 
 (4)Testdemo
 After successfully running the demo. py code, 100 sets of IR spectral data from the test set will be output. as shown in the following figure.
-
 Enter the IR spectral data number you want to test. 
-
 Next, the standard SMILES molecular formula corresponding to the set of IR spectral data in the output dataset, the predicted top 10 SMILES molecular formulas, Top1 accuracy, Top5 accuracy, Top10 accuracy MCS、 Levinstein distance
-
 (5)Maximum Common Substructure (MCS) Evaluation
 This code evaluates the Maximum Common Substructure (MCS) accuracy by comparing the predicted SMILES strings with each other and measuring how much structural similarity exists between them. It calculates the MCS between each pair of SMILES, which is the largest shared substructure found in both molecules. The accuracy is determined by the ratio of the size of the MCS to the size of the individual molecules. The highest MCS accuracy for each SMILES is stored in a new column and saved to a CSV file.
 To run the code, simply execute the script, which will:
